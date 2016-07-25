@@ -1,0 +1,21 @@
+{
+  "name": "exercise-81",
+  "version": "1.0.0",
+  "description": "Project Euler solution for problem 81 (https://projecteuler.net/problem=81)",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "test": "node ./node_modules/mocha/bin/mocha --compilers js:babel-register",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": "Guilherme Gonçalves",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.11.5",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
