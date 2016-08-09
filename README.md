@@ -1,4 +1,7 @@
-#Project Euler solutions
+#Algoritms for fun
 
-To practice with new languages, exercise my brain or just have fun I use the
-[Project Euler](https://projecteuler.net/) problems and keep my solutions on this repository.
+I love to program and sometimes
+
+I created this repositiry to keep the solutions of the algorithms I use to practice new languages, exercise my brain or just have fun.
+
+The main source for these algorithms is [Project Euler](https://projecteuler.net/).
