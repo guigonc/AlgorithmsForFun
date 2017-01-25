@@ -1,6 +1,8 @@
 defmodule PrimeNumber do
+
   import Integer
   @step 2
+
   @moduledoc """
   Provides functions for dealing with prime numbers
   """
@@ -21,17 +23,16 @@ defmodule PrimeNumber do
       true
 
   """
+  @spec prime?(pos_integer) :: boolean
   def prime?(1), do: false
   def prime?(2), do: true
   def prime?(number) when is_even(number), do: false
-  # def prime?(number) when rem(number, 3) == 0, do: false
   def prime?(number), do: prime?(number, 3)
-  # defp prime?(number, divider) when divider > div(number, 5), do: true
-  # defp prime?(number, divider) when (divider <= div(number, 5) and rem(number, divider) == 0), do: false
   defp prime?(number, divider) do
+    last_possible_divider = trunc(:math.sqrt(number) + 1)
     cond do
-      divider > :math.sqrt(number) + 1 -> true
-      (divider <= :math.sqrt(number) + 1 and rem(number, divider) == 0) -> false
+      divider > last_possible_divider -> true
+      (divider <= last_possible_divider and rem(number, divider) == 0) -> false
       true -> prime?(number, divider + @step)
     end
   end
@@ -52,6 +53,7 @@ defmodule PrimeNumber do
       5
 
   """
+  @spec nth_prime(pos_integer) :: integer
   def nth_prime(position) when position == 1, do: 2
   def nth_prime(position), do: nth_prime(position, 2, 3)
   defp nth_prime(position, position, number) when position > 0, do: number
