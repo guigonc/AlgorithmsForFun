@@ -1,4 +1,6 @@
 defmodule PrimeNumber do
+  import Integer
+  @step 2
   @moduledoc """
   Provides functions for dealing with prime numbers
   """
@@ -20,11 +22,13 @@ defmodule PrimeNumber do
 
   """
   def prime?(1), do: false
-  def prime?(number), do: prime?(number, 2)
-  defp prime?(number, divider) when divider > div(number, 2), do: true
-  defp prime?(number, divider) when (divider <= div(number, 2) and rem(number, divider) == 0), do: false
+  def prime?(2), do: true
+  def prime?(number) when is_even(number), do: false
+  def prime?(number), do: prime?(number, 3)
+  defp prime?(number, divider) when divider > div(number, 3), do: true
+  defp prime?(number, divider) when (divider <= div(number, 3) and rem(number, divider) == 0), do: false
   defp prime?(number, divider) do
-    prime?(number, divider + 1)
+    prime?(number, divider + @step)
   end
 
   @doc """
@@ -47,10 +51,7 @@ defmodule PrimeNumber do
   def nth_prime(position), do: nth_prime(position, 2, 3)
   defp nth_prime(position, position, number) when position > 0, do: number
   defp nth_prime(position, current_position, number) when position > 0 do
-    step = 2
-    cond do
-      (prime?(number + step)) -> nth_prime(position, current_position + 1, number + step)
-      (!prime?(number + step)) -> nth_prime(position, current_position, number + step)
-    end
+    new_position = if (prime?(number + @step)), do: current_position + 1, else: current_position
+    nth_prime(position, new_position, number + @step)
   end
 end
